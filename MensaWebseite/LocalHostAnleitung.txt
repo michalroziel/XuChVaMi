@@ -1,0 +1,7 @@
+Xampp runterladen.
+Den Ordner "MensaWebseite" in den Ordner "htdocs" rein kopieren der im Verzeichnis "C:\xampp\htdocs" liegt.
+Xampp Controll pannel ausführen -> Bei Modul "Apache" auf "Start" drücken.
+Diese Domains in Browser eingeben:
+http://localhost/MensaWebseite/index.php
+http://localhost/MensaWebseite/admin.php
+http://localhost/MensaWebseite/view_tables.php

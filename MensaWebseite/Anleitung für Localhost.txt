@@ -1,6 +1,0 @@
-Xampp runterladen.
-Den Ordner "MensaWebseite" in den Ordner "htdocs" rein kopieren der im Verzeichnis "C:\xampp\htdocs" liegt.
-Xampp Controll pannel ausführen -> Bei Module "Apache" auf "Start" drücken.
-Diese beiden Domains in Browser eingeben:
-http://localhost/MensaWebseite/index.html
-http://localhost/MensaWebseite/list_ratings.php
