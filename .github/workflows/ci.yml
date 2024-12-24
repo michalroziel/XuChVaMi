@@ -1,0 +1,59 @@
+name: CI for Maven Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch: # Trigger für manuelle Workflow-Starts
+    inputs:
+      message:
+        description: 'A custom message to trigger this workflow'
+        required: true
+        default: 'Triggering workflow'
+
+      version:
+        description: 'Specify Java version'
+        required: true
+        default: '17'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest] # Test on Linux, Windows, and macOS
+        java: [17, 21]                                    # Test with Java 17 and 21
+
+    steps:
+    # Step 1: Check out the code
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Java
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: ${{ matrix.java }}
+        distribution: 'temurin'
+        cache: 'maven'
+
+    # Step 3: Build and test with Maven
+    - name: Build and Test with Maven
+      run: mvn clean install
+      working-directory: ./maven-introduction-1.5  # Pfad zum Verzeichnis mit der pom.xml
+
+      # Step 4: Run Maven Tests
+    - name: Run Maven Tests
+      run: mvn clean verify -DdisplayName=true -B
+      working-directory: ./maven-introduction-1.5 # Path to pom.xml
+      continue-on-error: true
+
+    - name: Print Maven Test Results
+      run: |
+        echo "Maven Test Results:"
+        cat ./maven-introduction-1.5/target/surefire-reports/*.txt
