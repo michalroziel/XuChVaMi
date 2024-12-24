@@ -45,15 +45,15 @@ jobs:
     # Step 3: Build and test with Maven
     - name: Build and Test with Maven
       run: mvn clean install
-      working-directory: ./maven-introduction-1.5  # Pfad zum Verzeichnis mit der pom.xml
+      working-directory: ./cantine-planner  # Pfad zum Verzeichnis mit der pom.xml
 
       # Step 4: Run Maven Tests
     - name: Run Maven Tests
       run: mvn clean verify -DdisplayName=true -B
-      working-directory: ./maven-introduction-1.5 # Path to pom.xml
+      working-directory: ./cantine-planner # Path to pom.xml
       continue-on-error: true
 
     - name: Print Maven Test Results
       run: |
         echo "Maven Test Results:"
-        cat ./maven-introduction-1.5/target/surefire-reports/*.txt
+        cat ./cantine-planner/target/surefire-reports/*.txt
