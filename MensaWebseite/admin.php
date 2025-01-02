@@ -18,7 +18,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // ***************************************
 // === 1) Verarbeitung: Gericht hinzufügen ===
-// Wird nur ausgeführt, wenn in der URL der GET-Parameter ?action=addDish gesetzt ist.
+// Wird nur ausgeführt, wenn in der GET-Parameter ?action=addDish gesetzt ist.
 if (isset($_GET['action']) && $_GET['action'] === 'addDish') {
     // Liest die Formulardaten aus POST-Variablen aus (mit Null-Coalescing-Operator bei nicht vorhandenem Index).
     $name      = $_POST['name']      ?? '';
